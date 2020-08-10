@@ -1,23 +1,4 @@
-// (defn gen-densities
-//   "Returns a de Jong density grid of dimensions n x n"
-//   [n iters]
-//    (loop [i 0
-//           densities (make-grid n)
-//           x (/ n 2)
-//           y (/ n 2)]
-//      (let [new-x (+ (- (sin (* a y) (cos (* b x)))) (/ n 2))
-//            new-y (+ (- (sin (* c x) (cos (* d y)))) (/ n 2))
-//            new-densities (update-in densities [(round x) (round y)] #(+ 2 %))]
-//        (if (<= i iters)
-//          (recur (inc i) new-densities new-x new-y)
-//          densities))))
-
 const {sin, cos, max, log, round} = Math
-
-// const a = 0.02
-// const b = -0.02
-// const c = 0.02
-// const d = -0.02
 
 // const a = 1.641
 // const b = 1.902
@@ -77,11 +58,6 @@ for (let y = 0; y < N; y++) {
     const idx = (y * N + x) * 4;
     const light = (log(density[x][y]) / maxDensity) * 255;
     const softened = softLight(light, density[x][y]);
-
-    if (light !== 0) {
-      // console.log(light);
-      // console.log((density[x][y] / maxDensity));
-    }
 
     setPixel(
       data,
